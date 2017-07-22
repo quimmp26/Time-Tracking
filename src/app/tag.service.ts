@@ -24,7 +24,6 @@ export class TagService {
 
     this.authService.authEvent.subscribe((type) => {
       if (type === 'signout') {
-        console.log('taglar sıfırlandı');
         this.tags.splice(0, this.tags.length);
       } else {
         this.syncTagsWithServer();
@@ -44,8 +43,6 @@ export class TagService {
         const responseJson = response.json();
 
         if (responseJson.error === false) {
-          // this.tags = responseJson.tags;
-
           let tag_index = 0;
           for (tag_index = 0; tag_index < responseJson.tags.length; tag_index++) {
             const tagData = responseJson.tags[tag_index];

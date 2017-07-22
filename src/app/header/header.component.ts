@@ -19,9 +19,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onAuthSubmit(form: NgForm) {
-    // $("#authModal").remove();
     this.authService.auth(form.value.email, form.value.password, (response: Response) => {
-      // response.error a göre bildiri yap
       const responseJson = response.json();
       if (responseJson.error === true) {
         this.thereIsMessage = true;
@@ -30,7 +28,6 @@ export class HeaderComponent implements OnInit {
         this.authModelCloseEl.nativeElement.click();
         this.thereIsMessage = false;
       }
-      // console.log('dsf', response.json());
     });
   }
 
