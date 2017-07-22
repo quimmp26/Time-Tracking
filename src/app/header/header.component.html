@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header pull-left">
+      <a class="navbar-brand" href="#">TimeTraking</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <ul class="nav navbar-nav navbar-right pull-right text-right">
+      <li>
+        <a *ngIf="isAuthed()==false" href="#" data-toggle="modal" data-target="#authModal">Sign in/up</a>
+        <a *ngIf="isAuthed()==true" href="#" (click)="onSignOut()">Sign out</a>
+      </li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!--Sign in/up Modal-->
+<div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #authModelClose ><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="authModalLabel">Use your e-mail and a password to save your progress at anytime.</h4>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onAuthSubmit(authForm)" #authForm="ngForm">
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" ngModel>
+          </div>
+          <div *ngIf="thereIsMessage === true" class="form-group">
+            <div class="alert alert-danger">{{message}}</div>
+          </div>
+          <button type="submit" class="btn btn-primary">Sign up / Sing in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

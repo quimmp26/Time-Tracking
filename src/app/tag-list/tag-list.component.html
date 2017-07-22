@@ -1,0 +1,44 @@
+<ul class="tag-listing-wrapper">
+  <li
+    class="tag-listing"
+    *ngFor="let tag of tags"
+    [ngClass]="{tagisCounting: tag.isCounting}"
+  >
+    <div class="actions">
+      <a
+        href="#"
+        title="Start"
+        *ngIf="tag.isCounting==false"
+        (click)="onStartCounting(tag)"
+      >
+        <i class="glyphicon glyphicon-play"></i>
+      </a>
+
+      <a
+        href="#"
+        title="Stop"
+        *ngIf="tag.isCounting==true"
+        (click)="onStopCounting(tag)"
+      >
+        <i class="glyphicon glyphicon-stop"></i>
+      </a>
+      <!--<a
+        href="#"
+        title="History"
+        (click)="onShowHistory(tag)"
+      >
+        <i class="glyphicon glyphicon-tasks"></i>
+      </a>-->
+    </div>
+    <span class="tagName">{{ tag.name }} </span>
+    <span class="tagTotalTime"> {{ tag.totalTimeHR }}</span>
+
+  </li>
+</ul>
+<div class="container-fluid">
+  <div class="col-md-12 col-xs-12">
+    <div *ngIf="tags.length==0" class="alert alert-success">
+      Add new Tag to track time.
+    </div>
+  </div>
+</div>

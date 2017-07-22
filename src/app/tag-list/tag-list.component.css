@@ -1,0 +1,7 @@
+.tag-listing-wrapper{margin:0; padding: 0}
+.tag-listing{ background: #2980B9; list-style-type: none; margin: 5px;  padding: 10px; border: 1px solid #3498DB; border-radius: 3px;}
+.tag-listing.tagisCounting{background: #83E765; border-color: transparent}
+.tag-listing .actions{float: left; margin: 0 15px 0 0;}
+.tag-listing .actions i{color: #fff; font-size: 18px; margin: 0 3px;}
+.tag-listing .tagName{font-weight: bold; font-size: 16px;}
+.tag-listing .tagTotalTime{font-size: 12px}
