@@ -4,7 +4,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 @Injectable()
 export class ServerService {
   // TODO set this var to your API endpoint
-  private url = "http://localhost/timetracking/";
+  private url = null;
 
   constructor(private http: Http) {
     if (this.url === null) {
