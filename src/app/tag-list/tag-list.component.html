@@ -9,30 +9,44 @@
         href="#"
         title="Start"
         *ngIf="tag.isCounting==false"
-        (click)="onStartCounting(tag)"
-      >
-        <i class="glyphicon glyphicon-play"></i>
+        (click)="onStartCounting(tag); false">
+          <i class="glyphicon glyphicon-play"></i>
       </a>
-
       <a
         href="#"
         title="Stop"
         *ngIf="tag.isCounting==true"
-        (click)="onStopCounting(tag)"
-      >
-        <i class="glyphicon glyphicon-stop"></i>
+        (click)="onStopCounting(tag); false" >
+          <i class="glyphicon glyphicon-stop"></i>
       </a>
-      <!--<a
-        href="#"
-        title="History"
-        (click)="onShowHistory(tag)"
-      >
-        <i class="glyphicon glyphicon-tasks"></i>
-      </a>-->
     </div>
     <span class="tagName">{{ tag.name }} </span>
     <span class="tagTotalTime"> {{ tag.totalTimeHR }}</span>
-
+    <div class="actions pull-right">
+      <a
+        *ngIf="tag.historyVisible==false"
+        href="#"
+        title="History"
+        (click)="onShowHistory(tag); false"
+      >
+        <i class="glyphicon glyphicon-time"></i>
+      </a>
+      <a
+        *ngIf="tag.historyVisible==true"
+        href="#"
+        title="History"
+        (click)="onHideHistory(tag); false"
+      >
+        <i class="glyphicon glyphicon-chevron-up"></i>
+      </a>
+    </div>
+    <div class="history-panel">
+      <ul *ngIf="tag.historyVisible">
+        <ul>
+          <li *ngFor="let history of tag.history" [innerHTML]="history.readable"></li>
+        </ul>
+      </ul>
+    </div>
   </li>
 </ul>
 <div class="container-fluid">

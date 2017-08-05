@@ -79,4 +79,16 @@ export class TagService {
       return false;
     }
   }
+
+  getHistory(name: string) {
+    if (this.authService.isAuthed()) {
+      return this.serverService.postData({
+        'action': 'getHistory',
+        'token': this.authService.getToken(),
+        'name': name
+      });
+    } else {
+      return false;
+    }
+  }
 }

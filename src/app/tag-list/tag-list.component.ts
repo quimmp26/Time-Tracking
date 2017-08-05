@@ -32,6 +32,13 @@ export class TagListComponent {
   }
 
   onShowHistory(tag: Tag) {
+    tag.loadHistory( (response) => {
+      tag.showHistory();
+    });
+  }
+
+  onHideHistory(tag: Tag) {
     console.log(tag);
+    tag.hideHistory();
   }
 }

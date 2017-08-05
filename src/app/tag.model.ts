@@ -1,17 +1,20 @@
 import {TagService} from './tag.service';
 export class Tag {
+  public history: any[];
   public name: string;
   public totalTime: number;
   public totalTimeHR: string;
   public isCounting: boolean;
   private countInterval: number;
   private tagService: TagService;
+  public historyVisible;
 
   constructor(name: string, totalTime: number, isCounting: boolean) {
     this.name = name;
     this.totalTime = totalTime;
     this.isCounting = isCounting;
     this.totalTimeHR = this.formattedTotalTime();
+    this.historyVisible = false;
 
     if (this.isCounting) {
       this.startCounting();
@@ -74,5 +77,32 @@ export class Tag {
     formatted += (minutes < 10 ? '0' : '') + minutes.toString() + ':';
     formatted += (seconds < 10 ? '0' : '') + seconds.toString();
     return formatted;
+  }
+
+  loadHistory(callback: Function) {
+    const getHistory = this.tagService.getHistory(this.name);
+
+    if (getHistory === false) {
+      return false;
+    } else {
+      getHistory.subscribe(
+        (response) => {
+          const responseJSON = response.json();
+
+          if (responseJSON.error === false) {
+            this.history = responseJSON.history;
+          }
+          callback(response);
+        }
+      );
+    }
+  }
+
+  showHistory() {
+    this.historyVisible = true;
+  }
+
+  hideHistory() {
+    this.historyVisible = false;
   }
 }

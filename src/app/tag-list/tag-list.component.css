@@ -5,3 +5,7 @@
 .tag-listing .actions i{color: #fff; font-size: 18px; margin: 0 3px;}
 .tag-listing .tagName{font-weight: bold; font-size: 16px;}
 .tag-listing .tagTotalTime{font-size: 12px}
+.tag-listing .history-panel {max-height: 100px; overflow-y: auto; width: 100%; padding: 0 40px 0 40px;}
+.tag-listing .history-panel ul{width: 100%; padding: 0; list-style: none;}
+.tag-listing .history-panel ul>li{width: 100%; margin: 0 0 5px 0; background: hsl(204, 44%, 44%);  color: #fff;
+  padding: 3px 5px; font-size: 12px;}
